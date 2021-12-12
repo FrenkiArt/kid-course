@@ -1,6 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import router from './router.js';
+import router from './post/router.js';
 import dotenv from 'dotenv';
 
 // подключаем локальные данные в .env
