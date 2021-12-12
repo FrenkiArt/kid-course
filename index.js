@@ -1,26 +1,18 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import Post from './Post.js';
+import router from './router.js';
+import dotenv from 'dotenv';
 
-const PORT = 5000;
-const DB_URL =
-  'mongodb+srv://admin:admin@cluster0.1gccu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+// подключаем локальные данные в .env
+dotenv.config();
+
+const PORT = process.env.PORT;
+const DB_URL = process.env.DB_URL;
 
 const app = express();
 
 app.use(express.json());
-
-app.post('/', async (req, res) => {
-  try {
-    const {author, title, content, picture} = req.body;
-    const post = await Post.create({author, title, content, picture});
-    res.status(200).json(post);
-    console.log(req.body);
-  } catch (e) {
-    console.log(e);
-    res.status(500).json(e);
-  }
-});
+app.use('/api', router);
 
 async function startApp() {
   try {
