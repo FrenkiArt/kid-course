@@ -3,7 +3,6 @@ import * as path from 'path';
 
 class FileService {
   saveFile(file) {
-    console.log(file);
     try {
       const ext = file.name.slice(-4);
       const name = file.name.slice(0, -3);

@@ -13,6 +13,7 @@ const DB_URL = process.env.DB_URL;
 const app = express();
 
 app.use(express.json());
+app.use(express.static('static'));
 app.use(fileUpload({}));
 app.use('/api', router);
 
